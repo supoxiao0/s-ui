@@ -1,10 +1,13 @@
 <template>
-<button class="s-switch" :class="{'active': value, 'is-disabled': disabled}" @click="toggle">
+<button class="s-switch" :class="switchClass" :style="colorStyle" @click="toggle">
   <span class="s-switch-button"></span>
 </button>
 </template>
 
 <script>
+import {
+  computed
+} from 'vue'
 export default {
   props: {
     value: {
@@ -14,21 +17,38 @@ export default {
     disabled: {
       type: Boolean,
       default: false
-    },
-    width: {
-      type: Number,
-      default: 40
     }
   },
   setup(props, context) {
+    const defaultActiveBgColor = '#409eff'
+    const defaultInActiveBgColor = '#dcdfe6'
     const toggle = () => {
       if (!props.disabled) {
         context.emit('update:value', !props.value)
         context.emit('change', !props.value)
       }
     }
+    const switchClass = computed(() => {
+      return {
+        [`s-switch-active`]: props.value,
+        [`s-switch-disabled`]: props.disabled
+      }
+    })
+    const colorStyle = computed(() => {
+      if (props.value) {
+        return {
+          backgroundColor: context.attrs['active-color'] ? context.attrs['active-color'] : defaultActiveBgColor
+        }
+      } else {
+        return {
+          backgroundColor: context.attrs['inactive-color'] ? context.attrs['inactive-color'] : defaultInActiveBgColor
+        }
+      }
+    })
     return {
-      toggle
+      toggle,
+      switchClass,
+      colorStyle
     }
   }
 }
@@ -43,7 +63,7 @@ $w2: 16px;
   width: $w;
   height: $w/2;
   border-radius: $w/4;
-  background-color: #dcdfe6;
+  // background-color: #dcdfe6;
   cursor: pointer;
   border: none;
 
@@ -58,8 +78,8 @@ $w2: 16px;
     transition: left .3s;
   }
 
-  &.active {
-    background-color: #409eff;
+  &.s-switch-active {
+    // background-color: #409eff;
 
     >.s-switch-button {
       left: calc(100% - #{$w2} - 2px);
@@ -70,8 +90,9 @@ $w2: 16px;
     outline: none;
   }
 
-  &.is-disabled {
+  &.s-switch-disabled {
     opacity: .6;
+    cursor: default;
   }
 }
 </style>

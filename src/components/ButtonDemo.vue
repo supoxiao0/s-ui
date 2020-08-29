@@ -5,7 +5,7 @@
     <h2>基础用法</h2>
     <div class="demo-list">
       <div class="source">
-        <Button v-for="code in themeCodeInfo.valueList" :key="code.string" :theme="code.string">{{code.name}}</Button>
+        <Button v-for="code in themeCodeInfo.valueList" :key="code.name" :theme="code.attrList[0].string">{{code.name}}</Button>
       </div>
       <div v-show="themeCodeShow" class="code-ctn">
         <p class="desc">使用<code>theme</code>来定义Button的主题
@@ -22,7 +22,7 @@
     <h2>不同尺寸</h2>
     <div class="demo-list">
       <div class="source">
-        <Button v-for="code in sizeCodeInfo.valueList" :key="code.string" :size="code.string">{{code.name}}</Button>
+        <Button v-for="code in sizeCodeInfo.valueList" :key="code.name" :size="code.attrList[0].string">{{code.name}}</Button>
       </div>
       <div v-show="sizeCodeShow" class="code-ctn">
         <p class="desc">使用<code>size</code>来定义Button的大小
@@ -126,51 +126,77 @@ function handleCodeShow() {
 function initData() {
   const themeCodeInfo = reactive({
     tag: 's-button',
-    attr: 'theme',
     valueList: [{
         name: '默认按钮',
-        string: 'default'
+        attrList: [{
+          attr: 'theme=',
+          string: 'default'
+        }]
       },
       {
         name: '成功按钮',
-        string: 'success'
+        attrList: [{
+          attr: 'theme=',
+          string: 'success'
+        }]
       },
       {
         name: '警告按钮',
-        string: 'warning'
+        attrList: [{
+          attr: 'theme=',
+          string: 'warning'
+        }]
       },
       {
         name: '危险按钮',
-        string: 'danger'
+        attrList: [{
+          attr: 'theme=',
+          string: 'danger'
+        }]
       },
       {
         name: '朴素按钮',
-        string: 'plain'
+        attrList: [{
+          attr: 'theme=',
+          string: 'plain'
+        }]
       }
     ]
   })
   const sizeCodeInfo = reactive({
     tag: 's-button',
-    attr: 'size',
     valueList: [{
         name: '大按钮',
-        string: 'big'
+        attrList: [{
+          attr: 'size=',
+          string: 'big'
+        }]
       },
       {
         name: '默认大小',
-        string: 'medium'
+        attrList: [{
+          attr: 'size=',
+          string: 'medium'
+        }]
+
       },
       {
         name: '小按钮',
-        string: 'small'
+        attrList: [{
+          attr: 'size=',
+          string: 'small'
+        }]
+
       }
     ]
   })
   const disabledCodeInfo = reactive({
     tag: 's-button',
-    attr: 'disabled',
     valueList: [{
-      name: '默认按钮'
+      name: '默认按钮',
+      attrList: [{
+        attr: 'disabled'
+      }]
     }]
   })
   return {

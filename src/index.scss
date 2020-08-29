@@ -82,11 +82,42 @@ body {
           >.code-span-name {
             color: #3182bd;
           }
-          >.code-span-attr {
+          .code-span-attr {
             color: #3182bd;
           }
-          >.code-span-string {
+          .code-span-string {
             color: #756bb1;
+          }
+        }
+        >.code-js {
+          display: block;
+          padding-top: 20px;
+          >.code-js-tag {
+            display: block;
+            color: #3182bd;
+          }
+          >.code-js-keyword {
+            margin-left: 16px;
+            display: block;
+            color: #3182bd;
+          }
+          >.code-js-setup {
+            display: block;
+            margin-left: 32px;
+          }
+          >.code-js-return {
+            display: block;
+            margin-left: 48px;
+          }
+          >.code-js-fragment {
+            display: block;
+            margin-left: 48px;
+            color: #3182bd;
+          }
+          >.code-js-return-value {
+            display: block;
+            margin-left: 64px;
+            color: #31a354;
           }
         }
       }
