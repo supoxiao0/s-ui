@@ -17,6 +17,21 @@
         <li>
           <router-link to="/doc/tabs">Tabs 组件</router-link>
         </li>
+        <li>
+          <router-link to="/doc/tabs">Input 组件</router-link>
+        </li>
+        <li>
+          <router-link to="/doc/tabs">Select 组件</router-link>
+        </li>
+        <li>
+          <router-link to="/doc/tabs">Message 组件</router-link>
+        </li>
+        <li>
+          <router-link to="/doc/tabs">Table 组件</router-link>
+        </li>
+        <li>
+          <router-link to="/doc/tabs">Breadcrumb 组件</router-link>
+        </li>
       </ol>
     </aside>
     <main>
